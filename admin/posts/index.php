@@ -7,6 +7,8 @@ session_start();
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -61,6 +63,62 @@ session_start();
         </div>
     </div>
 </div>
+
+
+
+<script>
+
+
+
+    $(document).ready(function (){
+        LoadPosts();
+        function LoadPosts(){
+            $.ajax({
+                method: "POST",
+                url: "../../app/controllers/posts.php",
+                data: {
+                    action: "loadPosts"
+                }
+            })
+                .done(function( msg )
+                {
+                    var html = msg;
+                    $('#table').html(html);
+                });
+            setTimeout(LoadPosts, 500);
+
+        }
+
+
+    });
+    function deleteTopics(id,event){
+
+        $.ajax({
+            method: "POST",
+            url: "../../app/controllers/topic.php",
+            data: {
+                deleteID:id,
+                action: "DeleteTopics"
+            }
+        })
+            .done(function(  )
+            {
+                // window.location.href = 'index.php';
+
+            });
+
+    }
+
+
+
+
+
+
+</script>
+
+
+
+
 
 
 <!-- footer -->

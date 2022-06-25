@@ -16,7 +16,7 @@ if ($_POST['action']=="createTopics"){
         $message[] = 'Короткой описание';
     }
 
-    if (!empty($message)){
+ if (!empty($message)){
         $error_msg = ["key"=>"errpr","msg"=>$message];
         echo json_encode($error_msg);
     }else{

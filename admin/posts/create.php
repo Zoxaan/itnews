@@ -1,4 +1,7 @@
-
+<?php
+session_start();
+var_dump($_SESSION['id']);
+?>
 <!doctype html>
 <html lang="ru">
 <head>
@@ -38,7 +41,11 @@
                 <h2>Добавление записи</h2>
             </div>
             <div class="row add-post">
+                <div id="msg" class="mb-3 col-12 col-md-4">
+
+                </div>
                 <div class="mb-12 col-12 col-md-12 err">
+
 
                 </div>
                 <form action="create.php" method="post" enctype="multipart/form-data">
@@ -50,15 +57,15 @@
                         <textarea name="content" id="" class="form-control contentar" rows="6"></textarea>
                     </div>
                     <div class="input-group col mb-4 mt-4">
-                        <input name="img" type="file" class="form-control img " id="inputGroupFile02 ">
+                        <input name="img" type="file" class="form-control img " id="igsm ">
                         <label class="input-group-text" for="inputGroupFile02">Upload</label>
                     </div>
-                    <select name="topic" id="posts_status" class="form-select mb-2" aria-label="Default select example">
-                        <option selected>Категория поста:</option>
-                      
-                            <option value=""></option>
-                    
-                    </select>
+<!--                    <select name="topic" id="posts_status" class="form-select mb-2" aria-label="Default select example">-->
+<!--                        <option selected>Категория поста:</option>-->
+<!--                      -->
+<!--                            <option value="">asd</option>-->
+<!--                    -->
+<!--                    </select>-->
 
                     <div class="col col-6">
                         <button name="add_post" id="createPostBtn" class="btn btn-primary" type="submit">Добавить запись</button>
@@ -76,7 +83,7 @@
             event.preventDefault();
             var title = $('#posts_title').val();
             var content = $('textarea').val();
-            var img = $('.img').val();
+
 
 
             $.ajax({
@@ -86,13 +93,21 @@
                     {
                         title:title,
                         content:content,
-                        img:img,
+                        action:"createPosts"
 
 
                     }
             })
                 .done(function( msg ) {
-                    alert( "Data Saved: " + msg );
+                    console.log(msg);
+                    var message_arr = jQuery.parseJSON(msg);
+                    if (message_arr.key == "error_msg"){
+                        var html = '<div class="alert alert-danger" role="alert">' + message_arr.message + '</div>';
+                        $('div#msg').html(html);
+                        console.log("test");
+                    }else if (message_arr.key == "success"){
+                        window.location.href='index.php';
+                    }
                 });
 
         })

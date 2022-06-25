@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41f1079c-03c2-4882-880e-ab8a1a119492" name="Changes" comment="" />
+    <list default="true" id="41f1079c-03c2-4882-880e-ab8a1a119492" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/posts/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/posts/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/posts/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/posts/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/posts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/posts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/topics.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/topics.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1619360830_test1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1619360866_test1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1619530200_test1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1620237923_test1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1620237940_test1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1620238046_test1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1620239761_second.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1620239861_second.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1620239896_second.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1620239962_second.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1620374705_PostgreSQL.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1620374817_QA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1620374881_QA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1620375046_QA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1620375096_QA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1620377595_test1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1621268256_test1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1621268311_test1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1621881884_second.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1621881887_second.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/posts/1621881949_second.png" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +67,10 @@
       <workItem from="1655024076476" duration="1236000" />
       <workItem from="1655537648726" duration="970000" />
       <workItem from="1655890609796" duration="1669000" />
-      <workItem from="1655896529609" duration="17000" />
+      <workItem from="1655896529609" duration="619000" />
+      <workItem from="1656084010965" duration="933000" />
+      <workItem from="1656167215478" duration="7049000" />
+      <workItem from="1656181989048" duration="4924000" />
     </task>
     <servers />
   </component>
