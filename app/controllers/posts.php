@@ -37,3 +37,55 @@ if($_POST["action"]=="createPosts"){
 
 
 }
+
+
+if ($_POST['action']=="loadPosts") {
+    $query = $dbh->prepare("SELECT * FROM posts");
+    $query->execute();
+    $posts = $query->fetchAll(PDO::FETCH_ASSOC);
+
+
+    foreach ($posts as $key => $post) {
+        $number = $key + 1;
+        $posts_echo =
+            '<tr>
+                    <td> ' . $number . '</td>
+                     <td id="topicname" > ' . $post['Title'] . '</td>
+                     <td>
+                     <a  href="../../admin/posts/edit.php?edit_id=' . $post['id'] . ' ">edit</a>
+                     </td>
+                     <td>
+                     <a id="deleteTop" onclick="event.preventDefault();deletePosts(' . $post['id'] . ')" href="">delete</a>
+                      </td>
+
+
+
+            </tr>';
+
+
+        echo $posts_echo;
+    }
+}
+if ($_POST["action"]== "DeletePosts"){
+    $deleteIDpost = $_POST['deleteID'];
+    $query = $dbh->prepare("DELETE FROM `posts` WHERE id = $deleteIDpost");
+    $query->execute();
+}
+
+
+if ($_POST["action"]=="editpost"){
+    $postname=$_POST['postname'];
+    $postdics=$_POST['postcontent'];
+    $topID= $_POST['postid'];
+
+
+
+    $query = $dbh->prepare("UPDATE posts SET Title = :name , content = :dics  WHERE id = $topID");
+    $query->execute([
+        "name"=>$postname,
+        "dics"=>$postdics,
+    ]);
+
+}
+
+

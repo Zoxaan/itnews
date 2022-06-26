@@ -1,10 +1,20 @@
+<?php
+session_start();
+include "../../app/database/conect.php";
+$id = $_GET["edit_id"];
+$query = $dbh->prepare("SELECT * FROM posts WHERE id = $id");
+$query->execute();
 
+$editstr = $query->fetch(PDO::FETCH_ASSOC);
+
+?>
 <!doctype html>
 <html lang="ru">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -33,43 +43,43 @@
         <div class="row add-post">
             <div class="mb-12 col-12 col-md-12 err">
                 <!-- Вывод массива с ошибками -->
-                <?php include "../../app/helps/errorInfo.php"; ?>
+
             </div>
             <form action="edit.php" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="id" value=" ">
+                <input name="id" id="editID" value="<?=$editstr['id']?>" type="hidden">
                 <div class="col mb-4">
-                    <input value="" name="title" type="text" class="form-control" placeholder="Title" aria-label="Название статьи">
+                    <input value="<?=$editstr['Title']?>" id="PostTitle" name="title" type="text" class="form-control" placeholder="Title" aria-label="Название статьи">
                 </div>
                 <div class="col">
-                    <label for="editor" class="form-label">Содержимое записи</label>
-                    <textarea name="content" id="editor" class="form-control" rows="6"></textarea>
+                    <label for="editord" class="form-label">Содержимое записи</label>
+                    <textarea  name="content" id="editord" class="form-control" rows="6"><?=$editstr['content']?></textarea>
                 </div>
                 <div class="input-group col mb-4 mt-4">
                     <input name="img" type="file" class="form-control" id="inputGroupFile02">
                     <label class="input-group-text" for="inputGroupFile02">Upload</label>
                 </div>
 
-                <select name="topic" class="form-select mb-2" aria-label="Default select example">
+<!--                <select name="topic" class="form-select mb-2" aria-label="Default select example">-->
+<!---->
+<!--                        <option value=""></option>-->
+<!--                -->
+<!--                </select>-->
 
-                        <option value=""></option>
-                
-                </select>
-
-                <div class="form-check">
-                  
-                        <input name="publish" class="form-check-input" type="checkbox" id="flexCheckChecked">
-                        <label class="form-check-label" for="flexCheckChecked">
-                            Publish
-                        </label>
-                
-                        <input name="publish" class="form-check-input" type="checkbox" id="flexCheckChecked" checked>
-                        <label class="form-check-label" for="flexCheckChecked">
-                            Publish
-                        </label>
-              
-                </div>
+<!--                <div class="form-check">-->
+<!--                  -->
+<!--                        <input name="publish" class="form-check-input" type="checkbox" id="flexCheckChecked">-->
+<!--                        <label class="form-check-label" for="flexCheckChecked">-->
+<!--                            Publish-->
+<!--                        </label>-->
+<!--                -->
+<!--                        <input name="publish" class="form-check-input" type="checkbox" id="flexCheckChecked" checked>-->
+<!--                        <label class="form-check-label" for="flexCheckChecked">-->
+<!--                            Publish-->
+<!--                        </label>-->
+<!--              -->
+<!--                </div>-->
                 <div class="col col-6">
-                    <button name="edit_post" class="btn btn-primary" type="submit">Сохранить запись</button>
+                    <button name="edit_post" id="BTN-edit_post" class="btn btn-primary" type="submit">Сохранить запись</button>
                 </div>
             </form>
         </div>
@@ -77,6 +87,39 @@
     </div>
 </div>
 </div>
+
+<script>
+    $(document).ready(function (){
+        $('#BTN-edit_post').on('click',function (event){
+            event.preventDefault();
+            var topicName = $('input#PostTitle').val();
+
+            var topicContent= $('#editord').val();
+
+            var id = $('input#editID').val();
+
+            $.ajax({
+                method: "POST",
+                url: "../../app/controllers/posts.php",
+                data: {
+                    postname: topicName ,
+                   postcontent: topicContent,
+                    postid : id ,
+                    action:"editpost"
+                }
+            })
+                .done(function( msg ) {
+                    console.log(msg);
+                    window.location.href = 'index.php';
+                });
+        });
+
+    });
+
+
+
+</script>
+
 
 
 <!-- footer -->

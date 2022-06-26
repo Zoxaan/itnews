@@ -36,29 +36,20 @@ session_start();
                 <span class="col-1"></span>
                 <a href="edit.php" class="col-3 btn btn-warning">Редактировать</a>
             </div>
-            <div class="row title-table">
-                <h2>Управление записями</h2>
-                <div class="mb-12 col-12 col-md-12 err">
-                    <p></p>
-                </div>
-                <div class="col-1">ID</div>
-                <div class="col-5">Название</div>
-                <div class="col-2">Автор</div>
-                <div class="col-4">Управление</div>
-            </div>
-     
-                <div class="row post">
-                    <div class="id col-1"></div>
-                    <div class="title col-5"></div>
-                    <div class="author col-2"></div>
-                    <div class="red col-1"><a href="">edit</a></div>
-                    <div class="del col-1"><a href="">delete</a></div>
-           
-                        <div class="status col-2"><a href="">unpublish</a></div>
-          
-                        <div class="status col-2"><a href="">publish</a></div>
-             
-                </div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">name</th>
+                    <th scope="col">Редактирование</th>
+
+                </tr>
+                </thead>
+                <tbody id="table" >
+
+
+                </tbody>
+            </table>
          
         </div>
     </div>
@@ -82,6 +73,7 @@ session_start();
             })
                 .done(function( msg )
                 {
+                    console.log(msg);
                     var html = msg;
                     $('#table').html(html);
                 });
@@ -91,14 +83,14 @@ session_start();
 
 
     });
-    function deleteTopics(id,event){
+    function deletePosts(id,event){
 
         $.ajax({
             method: "POST",
-            url: "../../app/controllers/topic.php",
+            url: "../../app/controllers/posts.php",
             data: {
                 deleteID:id,
-                action: "DeleteTopics"
+                action: "DeletePosts"
             }
         })
             .done(function(  )
