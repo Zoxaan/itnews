@@ -57,8 +57,8 @@ var_dump($_SESSION['id']);
                         <textarea name="content" id="" class="form-control contentar" rows="6"></textarea>
                     </div>
                     <div class="input-group col mb-4 mt-4">
-                        <input name="img" type="file" class="form-control img " id="igsm ">
-                        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                        <input name="img" type="file" class="form-control img " id="igsm">
+<!--                        <label class="input-group-text" for="inputGroupFile02">Upload</label>-->
                     </div>
 <!--                    <select name="topic" id="posts_status" class="form-select mb-2" aria-label="Default select example">-->
 <!--                        <option selected>Категория поста:</option>-->
@@ -99,20 +99,40 @@ var_dump($_SESSION['id']);
                     }
             })
                 .done(function( msg ) {
-                    console.log(msg);
                     var message_arr = jQuery.parseJSON(msg);
                     if (message_arr.key == "error_msg"){
                         var html = '<div class="alert alert-danger" role="alert">' + message_arr.message + '</div>';
                         $('div#msg').html(html);
-                        console.log("test");
+                        // console.log("test");
                     }else if (message_arr.key == "success"){
-                        window.location.href='index.php';
+                        sendIMG();
+
+                        // window.location.href='index.php';
+
                     }
                 });
 
         })
-    });
+        function sendIMG(){
+            var file_data = $('#igsm').prop('files')[0];
+            var form_data = new FormData();
+            form_data.append('file', file_data);
+            alert(form_data);
+            $.ajax({
+                url: "../../app/controllers/posts.php",
+                dataType: 'text',
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: form_data,
+                type: 'post',
+                success: function(php_script_response){
+                    alert(php_script_response);
+                }
+            });
 
+        }
+    });
 
 
 

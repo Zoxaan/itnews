@@ -1,6 +1,22 @@
 <?php
 session_start();
 include ('../../app/database/conect.php');
+
+if(isset($_FILES['file'])) {
+    var_dump($_FILES);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 if($_POST["action"]=="createPosts"){
     $PostTitle = $_POST['title'];
     $PostContent = $_POST['content'];
