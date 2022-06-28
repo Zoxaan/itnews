@@ -2,8 +2,17 @@
 session_start();
 include ('../../app/database/conect.php');
 
-if(isset($_FILES['file'])) {
-    var_dump($_FILES);
+if(isset($_FILES['img'])) {
+
+
+    echo "asd";
+    $imgName = $_FILES['img']['name'];
+    $imgType = $_FILES['img']['type'];
+    $imgtemp = $_FILES['img']['tmp_name'];
+    $imgsize = $_FILES['img']['size'];
+
+    $img_filder = "../../assets/images/".$imgName;
+    $result = move_uploaded_file($imgtemp,$img_filder);
 }
 
 

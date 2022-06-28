@@ -48,7 +48,7 @@ var_dump($_SESSION['id']);
 
 
                 </div>
-                <form action="create.php" method="post" enctype="multipart/form-data">
+                <form action="create.php" method="post" enctype="multipart/form-data" id="testidform">
                     <div class="col mb-4">
                         <input value="" id="posts_title" name="title" type="text" class="form-control" placeholder="Title" aria-label="Название статьи">
                     </div>
@@ -57,7 +57,7 @@ var_dump($_SESSION['id']);
                         <textarea name="content" id="" class="form-control contentar" rows="6"></textarea>
                     </div>
                     <div class="input-group col mb-4 mt-4">
-                        <input name="img" type="file" class="form-control img " id="igsm">
+                        <input  type="file" class="form-control img " id="igsm" name="img">
 <!--                        <label class="input-group-text" for="inputGroupFile02">Upload</label>-->
                     </div>
 <!--                    <select name="topic" id="posts_status" class="form-select mb-2" aria-label="Default select example">-->
@@ -113,23 +113,45 @@ var_dump($_SESSION['id']);
                 });
 
         })
+
         function sendIMG(){
-            var file_data = $('#igsm').prop('files')[0];
-            var form_data = new FormData();
-            form_data.append('file', file_data);
-            alert(form_data);
+            // var fd = new FormData($('form') [0]); // получаем данные с формы . (0) - первая форма в документе .
+            // var fd = new FormData();
+            var fd = new FormData(document.getElementById("testidform"));
+            console.log(fd);
+
             $.ajax({
                 url: "../../app/controllers/posts.php",
                 dataType: 'text',
                 cache: false,
                 contentType: false,
                 processData: false,
-                data: form_data,
+                data: fd,
                 type: 'post',
                 success: function(php_script_response){
                     alert(php_script_response);
                 }
             });
+
+
+
+
+            // var file_data = $('#igsm').prop('files')[0];
+            // var form_data = new FormData();// получаем нашу форму
+            // form_data.append('file', file_data);
+            // console.log(file_data);
+            // $.ajax({
+            //     url: "../../app/controllers/posts.php",
+            //     dataType: 'text',
+            //     cache: false,
+            //     contentType: false,
+            //     processData: false,
+            //     data: form_data,
+            //     type: 'post',
+            //     success: function(php_script_response){
+            //         alert(php_script_response);
+            //     }
+            // });
 
         }
     });
