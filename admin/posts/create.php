@@ -85,7 +85,6 @@ var_dump($_SESSION['id']);
             var content = $('textarea').val();
 
 
-
             $.ajax({
                 method: "POST",
                 url: "../../app/controllers/posts.php",
@@ -99,37 +98,37 @@ var_dump($_SESSION['id']);
                     }
             })
                 .done(function( msg ) {
+
                     var message_arr = jQuery.parseJSON(msg);
                     if (message_arr.key == "error_msg"){
                         var html = '<div class="alert alert-danger" role="alert">' + message_arr.message + '</div>';
                         $('div#msg').html(html);
                         // console.log("test");
                     }else if (message_arr.key == "success"){
-                        sendIMG();
-
+                        sendIMG(message_arr.lastID);
                         // window.location.href='index.php';
-
                     }
                 });
 
         })
 
-        function sendIMG(){
+        function sendIMG(msgID){
+
             // var fd = new FormData($('form') [0]); // получаем данные с формы . (0) - первая форма в документе .
-            // var fd = new FormData();
             var fd = new FormData(document.getElementById("testidform"));
             console.log(fd);
+            console.log(msgID);
 
             $.ajax({
-                url: "../../app/controllers/posts.php",
+                url: "../../app/controllers/upload.php/?msgIDget=" +msgID,
                 dataType: 'text',
                 cache: false,
                 contentType: false,
                 processData: false,
                 data: fd,
-                type: 'post',
+                type:"POST",
                 success: function(php_script_response){
-                    alert(php_script_response);
+                     // alert(php_script_response);
                 }
             });
 
