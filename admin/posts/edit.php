@@ -45,7 +45,7 @@ $editstr = $query->fetch(PDO::FETCH_ASSOC);
                 <!-- Вывод массива с ошибками -->
 
             </div>
-            <form action="edit.php" method="post" enctype="multipart/form-data">
+            <form action="edit.php" method="post" id="testidform" enctype="multipart/form-data">
                 <input name="id" id="editID" value="<?=$editstr['id']?>" type="hidden">
                 <div class="col mb-4">
                     <input value="<?=$editstr['Title']?>" id="PostTitle" name="title" type="text" class="form-control" placeholder="Title" aria-label="Название статьи">
@@ -98,19 +98,23 @@ $editstr = $query->fetch(PDO::FETCH_ASSOC);
 
             var id = $('input#editID').val();
 
+            var fd = new FormData(document.getElementById("testidform"));
+            fd.append('postname',topicName);
+            fd.append('postdics',topicContent);
+            fd.append('topID',id);
+            fd.append('action',"editpost");
+
             $.ajax({
                 method: "POST",
+                processData: false,
+                contentType: false,
                 url: "../../app/controllers/posts.php",
-                data: {
-                    postname: topicName ,
-                   postcontent: topicContent,
-                    postid : id ,
-                    action:"editpost"
-                }
+                data:fd,
             })
                 .done(function( msg ) {
                     console.log(msg);
-                    window.location.href = 'index.php';
+
+                   // window.location.href = 'index.php';
                 });
         });
 

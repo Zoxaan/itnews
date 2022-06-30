@@ -119,15 +119,18 @@ if ($_POST["action"]== "DeletePosts"){
 
 if ($_POST["action"]=="editpost"){
     $postname=$_POST['postname'];
-    $postdics=$_POST['postcontent'];
-    $topID= $_POST['postid'];
+    $postdics=$_POST['postdics'];
+    $topID= $_POST['topID'];
+    $PostimgName = time() . "_".$_FILES['img']['name'];
 
 
 
-    $query = $dbh->prepare("UPDATE posts SET Title = :name , content = :dics  WHERE id = $topID");
+
+    $query = $dbh->prepare("UPDATE posts SET Title = :name , content = :dics , img = :img  WHERE id = $topID");
     $query->execute([
         "name"=>$postname,
         "dics"=>$postdics,
+        "img"=>$PostimgName,
     ]);
 
 }
