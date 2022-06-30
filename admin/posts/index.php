@@ -40,7 +40,8 @@ session_start();
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">name</th>
+                    <th scope="col">Название</th>
+                    <th scope="col">Автор</th>
                     <th scope="col">Редактирование</th>
 
                 </tr>

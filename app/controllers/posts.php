@@ -84,7 +84,7 @@ if($_POST["action"]=="createPosts"){
 
 
 if ($_POST['action']=="loadPosts") {
-    $query = $dbh->prepare("SELECT * FROM posts");
+    $query = $dbh->prepare("SELECT posts.*,users.username FROM posts JOIN users ON posts.user_id = users.id");
     $query->execute();
     $posts = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -95,6 +95,7 @@ if ($_POST['action']=="loadPosts") {
             '<tr>
                     <td> ' . $number . '</td>
                      <td id="topicname" > ' . $post['Title'] . '</td>
+                     <td>' . $post['username'] . '</td>
                      <td>
                      <a  href="../../admin/posts/edit.php?edit_id=' . $post['id'] . ' ">edit</a>
                      </td>
@@ -121,7 +122,22 @@ if ($_POST["action"]=="editpost"){
     $postname=$_POST['postname'];
     $postdics=$_POST['postdics'];
     $topID= $_POST['topID'];
-    $PostimgName = time() . "_".$_FILES['img']['name'];
+    if ($_FILES['img']['name'] == ''){
+        $PostimgName = "not_found.png";
+
+    }else{
+        $PostimgName = time() .'_'. $_FILES['img']['name'];
+        $imgType = $_FILES['img']['type'];
+        $imgtemp = $_FILES['img']['tmp_name'];
+        $imgsize = $_FILES['img']['size'];
+
+        $img_filder = "../../assets/images/" . $imgName;
+        $result = move_uploaded_file($imgtemp, $img_filder);
+    }
+
+
+
+
 
 
 
