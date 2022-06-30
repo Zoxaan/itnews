@@ -20,6 +20,18 @@ if($_POST["action"]=="createPosts"){
     //
     $PostTitle = $_POST['title'];
     $PostContent = $_POST['content'];
+    if ($_FILES['img']['name'] == ''){
+        $imgName = "not_found.png";
+
+    }else{
+        $imgName = time() .'_'. $_FILES['img']['name'];
+        $imgType = $_FILES['img']['type'];
+        $imgtemp = $_FILES['img']['tmp_name'];
+        $imgsize = $_FILES['img']['size'];
+
+        $img_filder = "../../assets/images/" . $imgName;
+        $result = move_uploaded_file($imgtemp, $img_filder);
+    }
 
 
     if ($PostContent == ""||$PostTitle == ""){
@@ -40,11 +52,12 @@ if($_POST["action"]=="createPosts"){
 
 
        // $UserID = $dbh->prepare("SELECT * FROM users WHERE id = ");
-        $postsinsert = $dbh->prepare("INSERT INTO posts (Title,content,user_id) VALUES (:name , :content,:userid)");
+        $postsinsert = $dbh->prepare("INSERT INTO posts (Title,content,user_id,img) VALUES (:name , :content,:userid,:img)");
         $postsinsert->execute([
             "name" => $PostTitle,
             "content"=>$PostContent,
-            "userid" => $_SESSION['id']
+            "userid" => $_SESSION['id'],
+            "img"=>$imgName,
         ]);
         $lastInsertID = $dbh->lastInsertId();
         $error_msg = ["key"=>"success","lastID"=>$lastInsertID];
@@ -64,15 +77,7 @@ if($_POST["action"]=="createPosts"){
 }
 
 
-//if (isset($_FILES['img'])){
-//    $imgName = $_FILES['img']['name'];
-//    $imgType = $_FILES['img']['type'];
-//    $imgtemp = $_FILES['img']['tmp_name'];
-//    $imgsize = $_FILES['img']['size'];
-//    var_dump($_FILES);
-//    $img_filder = "../../assets/images/".$imgName;
-//    $result = move_uploaded_file($imgtemp,$img_filder);
-//}
+
 
 
 

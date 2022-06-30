@@ -83,76 +83,36 @@ var_dump($_SESSION['id']);
             event.preventDefault();
             var title = $('#posts_title').val();
             var content = $('textarea').val();
+            var fd = new FormData(document.getElementById("testidform"));
+            fd.append('title',title);
+            fd.append('content',content);
+            fd.append('action',"createPosts");
 
 
             $.ajax({
                 method: "POST",
+                processData: false,
+                contentType: false,
                 url: "../../app/controllers/posts.php",
-                data:
-                    {
-                        title:title,
-                        content:content,
-                        action:"createPosts"
-
-
-                    }
+                data:fd
             })
                 .done(function( msg ) {
+                    alert(msg);
 
                     var message_arr = jQuery.parseJSON(msg);
                     if (message_arr.key == "error_msg"){
                         var html = '<div class="alert alert-danger" role="alert">' + message_arr.message + '</div>';
                         $('div#msg').html(html);
-                        // console.log("test");
+
                     }else if (message_arr.key == "success"){
                         sendIMG(message_arr.lastID);
-                        // window.location.href='index.php';
+
                     }
                 });
 
         })
 
-        function sendIMG(msgID){
 
-            // var fd = new FormData($('form') [0]); // получаем данные с формы . (0) - первая форма в документе .
-            var fd = new FormData(document.getElementById("testidform"));
-            console.log(fd);
-            console.log(msgID);
-
-            $.ajax({
-                url: "../../app/controllers/upload.php/?msgIDget=" +msgID,
-                dataType: 'text',
-                cache: false,
-                contentType: false,
-                processData: false,
-                data: fd,
-                type:"POST",
-                success: function(php_script_response){
-                     // alert(php_script_response);
-                }
-            });
-
-
-
-
-            // var file_data = $('#igsm').prop('files')[0];
-            // var form_data = new FormData();// получаем нашу форму
-            // form_data.append('file', file_data);
-            // console.log(file_data);
-            // $.ajax({
-            //     url: "../../app/controllers/posts.php",
-            //     dataType: 'text',
-            //     cache: false,
-            //     contentType: false,
-            //     processData: false,
-            //     data: form_data,
-            //     type: 'post',
-            //     success: function(php_script_response){
-            //         alert(php_script_response);
-            //     }
-            // });
-
-        }
     });
 
 
