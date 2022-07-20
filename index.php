@@ -1,5 +1,8 @@
 <?php
 session_start();
+include "/app/database/conect.php";
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -7,6 +10,7 @@ session_start();
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -74,8 +78,9 @@ session_start();
 <div class="container">
     <div class="content row">
         <!-- Main Content -->
-        <div class="main-content col-md-9 col-12">
-            <h2>Последние публикации</h2>
+        <h2 class="mt-5 mb-5" >Последние публикации</h2>
+        <div class="main-content col-md-9 col-12" id="posts">
+
             
                 <div class="post row">
                     <div class="img col-12 col-md-4">
@@ -93,39 +98,6 @@ session_start();
                         </p>
                     </div>
                 </div>
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="../assets/images/image_5.png" class="img-thumbnail">
-                </div>
-                <div class="post_text col-12 col-md-8">
-                    <h3>
-                        <a href=""> </a>
-                    </h3>
-                    <i class="far fa-user">Пользователь 2 </i>
-                    <i class="far fa-calendar">21.02.2022 </i>
-                    <p class="preview-text">20 пасхалок в поиске Google, которые заставят вас залипнуть
-
-
-                    </p>
-                </div>
-            </div>
-            <div class="post row">
-                <div class="img col-12 col-md-4">
-                    <img src="../assets/images/image_6.png" class="img-thumbnail">
-                </div>
-                <div class="post_text col-12 col-md-8">
-                    <h3>
-                        <a href=""> </a>
-                    </h3>
-                    <i class="far fa-user">Пользователь 3</i>
-                    <i class="far fa-calendar">20.02.2022 </i>
-                    <p class="preview-text">Выиграть $30.000 за 13 килобайт кода на JS: в августе стартует конкурс js13kGames
-
-
-                    </p>
-                </div>
-            </div>
-            
            
         </div>
         <!-- sidebar Content -->
@@ -157,6 +129,31 @@ session_start();
     </div>
 
 </div>
+
+    <script>
+        $(document).ready(function (){
+            LoadPosts();
+            function LoadPosts(){
+                $.ajax({
+                    method: "POST",
+                    url: "/app/controllers/posts.php",
+                    data: {
+                        action: "loadPostsInIndex"
+                    }
+                })
+                    .done(function( msg )
+                    {
+                        console.log(msg);
+                        var html = msg;
+                        $('#posts').html(html);
+                    });
+             //   setTimeout(LoadPosts, 500);
+
+            }
+
+
+        });
+    </script>
 
 <!-- блок main END-->
 <!-- footer -->

@@ -14,7 +14,6 @@ include ('../../app/database/conect.php');
 
 
 
-
 if($_POST["action"]=="createPosts"){
 
     //
@@ -111,6 +110,43 @@ if ($_POST['action']=="loadPosts") {
         echo $posts_echo;
     }
 }
+
+if ($_POST['action']=="loadPostsInIndex") {
+    $query = $dbh->prepare("SELECT posts.*,users.username FROM posts JOIN users ON posts.user_id = users.id");
+    $query->execute();
+    $posts = $query->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+
+    foreach ($posts as $key => $post) {
+
+        $number = $key + 1;
+        $posts_echo ='
+                <div class="post row">
+                    <div class="img col-12 col-md-4">
+                        <img src="/assets/images/'.$post['img'].'" class="img-thumbnail">
+                    </div>
+                     <div class="post_text col-12 col-md-8">
+                        <h3>
+                            <a href="../../single.php?id='.$post['id'].'"> '.$post['Title'].' </a>
+                        </h3>
+                        <i class="far fa-user">'.$post['username'].' </i>
+                        <i class="far fa-calendar">'.$post['date_create'].'</i>
+                        <p class="preview-text">
+
+                           '.$post['content'].'
+                        </p>
+                    </div>
+                </div>'
+            ;
+
+
+        echo $posts_echo;
+    }
+}
+
+
 if ($_POST["action"]== "DeletePosts"){
     $deleteIDpost = $_POST['deleteID'];
     $query = $dbh->prepare("DELETE FROM `posts` WHERE id = $deleteIDpost");

@@ -1,4 +1,13 @@
+<?php
+include "app/database/conect.php";
+$idPost = $_GET["id"];
 
+//SELECT posts.*,users.username FROM posts JOIN users ON posts.user_id = users.id WHERE id = $idPost
+$conkretniypost = $dbh->prepare("SELECT posts.*,users.username FROM posts JOIN users ON posts.user_id = users.id WHERE posts.id = $idPost ");
+$conkretniypost->execute();
+$conkretniypost = $conkretniypost->fetch();
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -27,45 +36,45 @@
     <div class="content row">
         <!-- Main Content -->
         <div class="main-content col-md-9 col-12">
-            <h2></h2>
+            <h2><?=$conkretniypost['Title']?></h2>
 
             <div class="single_post row">
                 <div class="img col-12">
-                    <img src="" class="img-thumbnail">
+                    <img src="/assets/images/<?= $conkretniypost["img"] ?>" class="img-thumbnail">
                 </div>
                 <div class="info">
-                    <i class="far fa-user"> </i>
-                    <i class="far fa-calendar"> </i>
+                    <i class="far fa-user"> <?= $conkretniypost["username"] ?> </i>
+                    <i class="far fa-calendar"><?= $conkretniypost["date_create"] ?> </i>
                 </div>
                 <div class="single_post_text col-12">
-                 
+                    <?= $conkretniypost["content"] ?>
                 </div>
                 <!-- ИНКЛЮДИМ HTML БЛОК С КОММЕНТАРИЯМИ  --->
-                <?php include("app/include/comments.php"); ?>
+
             </div>
 
         </div>
         <!-- sidebar Content -->
-        <div class="sidebar col-md-3 col-12">
-
-            <div class="section search">
-                <h3>Поиск</h3>
-                <form action="/" method="post">
-                    <input type="text" name="search-term" class="text-input" placeholder="Введите искомое слово...">
-                </form>
-            </div>
-
-
-            <div class="section topics">
-                <h3>Категории</h3>
-                <ul>
-                 
-                        <li>
-                            <a href=""></a>
-                        </li>
-             
-                </ul>
-            </div>
+<!--        <div class="sidebar col-md-3 col-12">-->
+<!---->
+<!--            <div class="section search">-->
+<!--                <h3>Поиск</h3>-->
+<!--                <form action="/" method="post">-->
+<!--                    <input type="text" name="search-term" class="text-input" placeholder="Введите искомое слово...">-->
+<!--                </form>-->
+<!--            </div>-->
+<!---->
+<!---->
+<!--            <div class="section topics">-->
+<!--                <h3>Категории</h3>-->
+<!--                <ul>-->
+<!--                 -->
+<!--                        <li>-->
+<!--                            <a href=""></a>-->
+<!--                        </li>-->
+<!--             -->
+<!--                </ul>-->
+<!--            </div>-->
 
         </div>
     </div>
