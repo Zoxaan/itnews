@@ -1,6 +1,6 @@
 <?php
 session_start();
-var_dump($_SESSION['id']);
+
 ?>
 <!doctype html>
 <html lang="ru">
@@ -60,6 +60,18 @@ var_dump($_SESSION['id']);
                         <input  type="file" class="form-control img " id="igsm" name="img">
 <!--                        <label class="input-group-text" for="inputGroupFile02">Upload</label>-->
                     </div>
+                    <div class="form-check">
+                        <input name="publish" class="form-check-input" type="checkbox"  id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Опобликовать сразу?
+                        </label>
+                    </div>
+<!--                    <select class="form-select" aria-label="Default select example">-->
+<!--                        <option selected>Open this select menu</option>-->
+<!--                        <option value="1">One</option>-->
+<!--                        <option value="2">Two</option>-->
+<!--                        <option value="3">Three</option>-->
+<!--                    </select>-->
 <!--                    <select name="topic" id="posts_status" class="form-select mb-2" aria-label="Default select example">-->
 <!--                        <option selected>Категория поста:</option>-->
 <!--                      -->
@@ -83,9 +95,12 @@ var_dump($_SESSION['id']);
             event.preventDefault();
             var title = $('#posts_title').val();
             var content = $('textarea').val();
+            var publish =$('input#flexCheckDefault').is(':checked');
             var fd = new FormData(document.getElementById("testidform"));
+
             fd.append('title',title);
             fd.append('content',content);
+            fd.append('pub',publish);
             fd.append('action',"createPosts");
 
 
@@ -98,6 +113,7 @@ var_dump($_SESSION['id']);
             })
                 .done(function( msg ) {
                     alert(msg);
+
 
                     var message_arr = jQuery.parseJSON(msg);
                     if (message_arr.key == "error_msg"){

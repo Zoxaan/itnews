@@ -29,6 +29,10 @@ include "/app/database/conect.php";
 
 <?php include("app/include/header.php"); ?>
 
+
+
+
+
 <!-- блок карусели START-->
 <div class="container">
     <div class="row">
@@ -73,6 +77,8 @@ include "/app/database/conect.php";
         </button>
     </div>
 <!-- блок карусели END-->
+
+
 
 <!-- блок main-->
 <div class="container">

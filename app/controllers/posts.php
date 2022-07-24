@@ -15,8 +15,17 @@ include ('../../app/database/conect.php');
 
 
 if($_POST["action"]=="createPosts"){
+//    var_dump($_POST);
 
-    //
+//   if ($_POST['pub']=="true"){
+//      $hot_status = 1;
+//   }else{
+//       $hot_status=0;
+//   }
+
+    $hot_status = ($_POST['pub'] == "true") ? 1 : 0;
+
+
     $PostTitle = $_POST['title'];
     $PostContent = $_POST['content'];
     if ($_FILES['img']['name'] == ''){
@@ -51,12 +60,13 @@ if($_POST["action"]=="createPosts"){
 
 
        // $UserID = $dbh->prepare("SELECT * FROM users WHERE id = ");
-        $postsinsert = $dbh->prepare("INSERT INTO posts (Title,content,user_id,img) VALUES (:name , :content,:userid,:img)");
+        $postsinsert = $dbh->prepare("INSERT INTO posts (Title,content,user_id,img,hot) VALUES (:name , :content,:userid,:img,:hot_status)");
         $postsinsert->execute([
             "name" => $PostTitle,
             "content"=>$PostContent,
             "userid" => $_SESSION['id'],
             "img"=>$imgName,
+            "hot_status"=>$hot_status,
         ]);
         $lastInsertID = $dbh->lastInsertId();
         $error_msg = ["key"=>"success","lastID"=>$lastInsertID];
