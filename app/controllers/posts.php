@@ -129,6 +129,8 @@ if ($_POST['action']=="loadPostsInIndex") {
 
 
 
+
+
     foreach ($posts as $key => $post) {
 
         $number = $key + 1;
@@ -141,7 +143,8 @@ if ($_POST['action']=="loadPostsInIndex") {
                         <h3>
                             <a href="../../single.php?id='.$post['id'].'"> '.$post['Title'].' </a>
                         </h3>
-                        <i class="far fa-user">'.$post['username'].' </i>
+                        <i class="far fa-user"> <a href="profile.php?userid='.$post['user_id'].'"> '.$post['username'].' </a>  </i>
+                        
                         <i class="far fa-calendar">'.$post['date_create'].'</i>
                         <p class="preview-text">
 

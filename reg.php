@@ -100,7 +100,7 @@ session_start();
                     $('div#msg').html(html);
 
                 }else{
-                    window.location.href = 'index.php';
+                    // window.location.href = 'index.php';
                 }
             });
         })
