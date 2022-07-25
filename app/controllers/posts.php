@@ -15,13 +15,7 @@ include ('../../app/database/conect.php');
 
 
 if($_POST["action"]=="createPosts"){
-//    var_dump($_POST);
 
-//   if ($_POST['pub']=="true"){
-//      $hot_status = 1;
-//   }else{
-//       $hot_status=0;
-//   }
 
     $hot_status = ($_POST['pub'] == "true") ? 1 : 0;
 

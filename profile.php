@@ -2,13 +2,18 @@
 include 'app/database/conect.php';
 $user_id = $_GET['userid'];
 
-$user = $dbh->prepare("SELECT * FROM users WHERE id = $user_id");
+$user = $dbh->prepare("SELECT users.*, role.name_role FROM users JOIN role ON users.id = $user_id ");
 $user->execute();
 
 $user = $user->fetch();
 
-var_dump($user);
-exit();
+$colwo_posts = $dbh->prepare("SELECT * FROM posts WHERE user_id = $user_id");
+$colwo_posts->execute();
+$colwo_posts = $colwo_posts->rowCount();
+
+
+
+
 
 
 
@@ -30,15 +35,12 @@ exit();
 		<div class="content">
 			<div class="details">
 				<h2> Никнейм: <?=$user['username']?></h2><span>
-                    Rank: <?php
-
-                    ?>
+                    Rank: <?=$user['name_role']?>
                 </span>
                 </h2>
 				<div class="data">
-					<h3>111<br><span>Постов</span></h3></br>
-					<h3>777<br><span>Подписчиков</span></br></h3>
-					<h3>333<br><span>Подписок</span></br></h3>
+					<h3><?=$colwo_posts?><br><span>Постов</span></h3></br>
+
 				</div>
 				<div class="actionBtn">
 					<a href="https://www.youtube.com/channel/UCw8p_ZEJqLigEHvWuzqS04w"><button>Подпишитесь</button></a>

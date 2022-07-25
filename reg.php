@@ -26,7 +26,7 @@ session_start();
 <!-- END HEADER -->
 <!-- FORM -->
 <div class="container reg_form">
-    <form  method="post" enctype="multipart/form-data">
+    <form  method="post" enctype="multipart/form-data " id="reguserform" >
         <div class="row justify-content-center">
         <h2>Форма регистрации</h2>
         <div class="mb-3 col-12 col-md-4 err">
@@ -59,11 +59,19 @@ session_start();
             <label for="exampleInputPassword2"  class="form-label">Повторите пароль</label>
             <input name="pass-second" id="pass_ver" type="password" class="form-control" id="exampleInputPassword2" placeholder="повторите ваш пароль...">
         </div>
+
+
         <div class="w-100"></div>
+            <div class="mb-2 col-12 col-md-4">
+                <input  type="file" class="form-control img " id="igsm" name="img">
+
+            </div>
+            <div class="w-100"></div>
         <div class="mb-3 col-12 col-md-4">
             <button type="submit" class=" reg btn btn-secondary" name="button-reg">Регистрация</button>
             <a href="aut.html">Войти</a>
         </div>
+
 
     </div>
     </form>
@@ -72,39 +80,96 @@ session_start();
 
 <script>
 
-    $(document).ready(function(){
 
-        $('button.reg').on('click',function(event){
+
+
+    $(document).ready(function (){
+        $('button.reg').on('click',function (event){
             event.preventDefault();
-          var username = $('input#username').val();
-          var email = $('input#email').val();
-          var pass = $('input#password').val();
-          var pass_ver = $('input#pass_ver').val();
-          $.ajax({
-            method: "POST",
-            url: "/app/controllers/users.php",
-            data: {
-                username: username,
-                email: email,
-                password: pass,
-                pass_ver: pass_ver,
-                action: "reg_user"
-             }
-            })
-            .done(function( msg )
-            {
-                console.log(msg);
-                var message_arr = jQuery.parseJSON(msg);
-                if(message_arr.key == "error"){
-                    var html = '<div class="alert alert-danger" role="alert">' + message_arr.message + '</div>';
-                    $('div#msg').html(html);
+            var username = $('input#username').val();
+            var email = $('input#email').val();
+            var pass = $('input#password').val();
+            var pass_ver = $('input#pass_ver').val();
+            var fd = new FormData(document.getElementById("reguserform"));
 
-                }else{
-                    // window.location.href = 'index.php';
-                }
-            });
+            fd.append('username',username);
+            fd.append('email',email);
+            fd.append('password',pass);
+            fd.append('pass_ver',pass_ver);
+            fd.append('action',"reg_user");
+
+
+
+            $.ajax({
+                method: "POST",
+                processData: false,
+                contentType: false,
+                url: "../../app/controllers/users.php",
+                data:fd
+            })
+                .done(function( msg ) {
+                    alert(msg);
+
+
+                    console.log(msg);
+                                var message_arr = jQuery.parseJSON(msg);
+                                if(message_arr.key == "error"){
+                                    var html = '<div class="alert alert-danger" role="alert">' + message_arr.message + '</div>';
+                                    $('div#msg').html(html);
+
+                                }else{
+                                     window.location.href = 'index.php';
+                                }
+                });
+
         })
+
+
     });
+
+
+
+
+
+
+
+
+
+//    gotoviy variant
+
+    // $(document).ready(function(){
+    //
+    //     $('button.reg').on('click',function(event){
+    //         event.preventDefault();
+    //       var username = $('input#username').val();
+    //       var email = $('input#email').val();
+    //       var pass = $('input#password').val();
+    //       var pass_ver = $('input#pass_ver').val();
+    //       $.ajax({
+    //         method: "POST",
+    //         url: "/app/controllers/users.php",
+    //         data: {
+    //             username: username,
+    //             email: email,
+    //             password: pass,
+    //             pass_ver: pass_ver,
+    //             action: "reg_user"
+    //          }
+    //         })
+    //         .done(function( msg )
+    //         {
+    //             console.log(msg);
+    //             var message_arr = jQuery.parseJSON(msg);
+    //             if(message_arr.key == "error"){
+    //                 var html = '<div class="alert alert-danger" role="alert">' + message_arr.message + '</div>';
+    //                 $('div#msg').html(html);
+    //
+    //             }else{
+    //                 // window.location.href = 'index.php';
+    //             }
+    //         });
+    //     })
+    // });
 </script>
 
 <!-- footer -->

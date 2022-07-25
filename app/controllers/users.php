@@ -12,6 +12,30 @@ if ( $_POST['action'] == "reg_user"){
 
     $status = 2;
 
+//  var_dump($_FILES["img"]["name"]);
+//
+//if ($_FILES["img"]["name"]==""){
+//    echo "pusto";
+//}else{
+//    echo "nepusto";
+//}
+
+
+
+
+    if ($_FILES['img']['name'] == ''){
+        $imgName = "not_found.png";
+
+    }else{
+        $imgName = time() .'_'. $_FILES['img']['name'];
+        $imgType = $_FILES['img']['type'];
+        $imgtemp = $_FILES['img']['tmp_name'];
+        $imgsize = $_FILES['img']['size'];
+
+        $img_filder = "../../assets/avatars/" . $imgName;
+        $result = move_uploaded_file($imgtemp, $img_filder);
+    }
+
 
 
 
@@ -45,11 +69,12 @@ if ( $_POST['action'] == "reg_user"){
         echo json_encode($error_array);
     }else{
         $error_array = ["key" => "success", "message" => "Регестрация прошла успешно"];
-        $user = $dbh->prepare("INSERT INTO `users` (email,username,password,jobtitle) VALUES (:email , :username, :password, :status )");
+        $user = $dbh->prepare("INSERT INTO `users` (email,username,password,avatar,jobtitle) VALUES (:email , :username, :password,:avatar, :status )");
         $user->execute([
             "email"=>$email,
             "username"=>$username,
             "password"=> password_hash($password,PASSWORD_DEFAULT),
+            "avatar" => $imgName,
             "status"=>$status
         ]);
         $userID = $dbh->lastInsertId();
