@@ -12,13 +12,6 @@ if ( $_POST['action'] == "reg_user"){
 
     $status = 2;
 
-//  var_dump($_FILES["img"]["name"]);
-//
-//if ($_FILES["img"]["name"]==""){
-//    echo "pusto";
-//}else{
-//    echo "nepusto";
-//}
 
 
 

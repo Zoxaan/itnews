@@ -1,3 +1,6 @@
+<?php
+var_dump($_SESSION);
+?>
 <header class="container-fluid">
     <div class="container">
         <div class="row">
@@ -11,30 +14,25 @@
                     <li><a href="">Главная</a> </li>
                     <li><a href="">О нас</a> </li>
                     <li><a href="#">Услуги</a> </li>
-
                     <li>
                        <?php if (isset($_SESSION['id'])): ?>
                             <a href="#">
                                 <i class="fa fa-user"><?=$_SESSION['login']?></i>
-                               
                             </a>
                        <ul>
-                           <?php if ($_SESSION['adminstatus']): ?>
+                           <?php if ($_SESSION['adminstatus'] == 1): ?>
 
                                <li>  <a href="admin/posts/index.php">Админ панель</a></li>
 
                            <?php endif;?>
+                           <li>  <a href="profile.php?userID=<?=$_SESSION['id'] ?>">Профиль</a></li>
 
                                <li><a href="../../logout.php">Выход</a> </li>
-
-
-
                        </ul>
 
                        <?php else: ?>
                            <a href="#">
                                <i class="fa fa-user">Личный кабенет</i>
-
                            </a>
                         <ul>
                             <li><a href="../../log.php">ВХод</a> </li>
