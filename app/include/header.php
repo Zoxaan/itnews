@@ -1,5 +1,5 @@
 <?php
-var_dump($_SESSION);
+
 ?>
 <header class="container-fluid">
     <div class="container">

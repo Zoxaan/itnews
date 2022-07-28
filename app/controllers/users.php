@@ -10,7 +10,7 @@ if ( $_POST['action'] == "reg_user"){
     $password =  trim($_POST['password']);
     $pass_ver =  trim($_POST['pass_ver']);
 
-    $status = 2;
+    $status = 3;
 
 
 

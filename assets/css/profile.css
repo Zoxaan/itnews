@@ -1,0 +1,26 @@
+li {
+    list-style-type: none; /* Убираем маркеры */
+}
+
+.role_admin{
+    background-color: red;
+    padding: 4px 6px;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.role_moder{
+    background-color: green;
+    padding: 4px 6px;
+    color: #fff;
+    border-radius: 3px;
+}
+
+}
+
+.role_user{
+    background-color: blue;
+    padding: 4px 6px;
+    color: #fff;
+    border-radius: 3px;
+}

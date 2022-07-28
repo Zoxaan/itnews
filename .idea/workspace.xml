@@ -5,8 +5,36 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/users.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/include/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/include/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/avatars/1658740674_tenor (8).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/avatars/1658746166_5d53aff2821f77be679bc859e3c33b3b.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/avatars/1658746245_tenor (19).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1656577028_tenor (20).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1656577169_EvenBreakableLamprey-size_restricted.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1656577539_tenor (11).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1656577541_tenor (11).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1656600665_tenor (20).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1656600669_tenor (20).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1656602177_skachat-anime-gifki-humoraf-43.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1656602181_skachat-anime-gifki-humoraf-43.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1658323873_tenor (19).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1658323900_tenor (21).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1658323942_tenor (16).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1658324040_tenor (20).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1658324046_tenor (20).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1658328031_tenor.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1658328041_EvenBreakableLamprey-size_restricted.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1658678065_tenor (3).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1658693593_tenor (2).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/3991-6612a2c65a4632e7d8f4bf60067ca15c.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/tenor (1).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/tenor (10).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/tenor (11).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/tenor (19).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/tenor (2).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/tenor (4).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/tenor (5).gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/tenor (8).gif" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profilenew.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +43,13 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -27,15 +62,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/OSPanel/domains/siteajaxblogs/assets/avatars&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "F:/OSPanel/domains/siteajaxblogs/assets/avatars",
+    "list.type.of.created.stylesheet": "CSS",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\OSPanel\domains\siteajaxblogs\assets\avatars" />
@@ -70,7 +106,7 @@
       <workItem from="1658658800272" duration="6714000" />
       <workItem from="1658739765707" duration="2805000" />
       <workItem from="1658763825272" duration="2144000" />
-      <workItem from="1659026205591" duration="403000" />
+      <workItem from="1659026205591" duration="3755000" />
     </task>
     <servers />
   </component>
