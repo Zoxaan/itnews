@@ -8,9 +8,10 @@ session_start();
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<!--    jquery-->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-
+<!--CKEditor-->
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
@@ -54,7 +55,7 @@ session_start();
                     </div>
                     <div class="col">
                         <label for="editor" class="form-label">Содержимое записи</label>
-                        <textarea name="content" id="" class="form-control contentar" rows="6"></textarea>
+                        <textarea name="content" id="editor" class="form-control contentar" rows="6"></textarea>
                     </div>
                     <div class="input-group col mb-4 mt-4">
                         <input  type="file" class="form-control img " id="igsm" name="img">
@@ -90,12 +91,33 @@ session_start();
 </div>
 
 <script>
-    $(document).ready(function (){
+    var myEditor;
+
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .then( editor => {
+            console.log( 'Editor was initialized', editor );
+            myEditor = editor;
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+
+
+
+
+
+
+
+        //
+    document.addEventListener("DOMContentLoaded", function(event){
         $('#createPostBtn').on('click',function (event){
+
             event.preventDefault();
             var title = $('#posts_title').val();
-            var content = $('textarea').val();
+            var content = myEditor.getData();
             var publish =$('input#flexCheckDefault').is(':checked');
+
             var fd = new FormData(document.getElementById("testidform"));
 
             fd.append('title',title);
@@ -127,9 +149,10 @@ session_start();
                 });
 
         })
-
-
     });
+
+
+
 
 
 
@@ -146,7 +169,7 @@ session_start();
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 <!-- Добавление визуального редактора к текстовому полю админки -->
-<script src="https://cdn.ckeditor.com/ckeditor5/27.0.0/classic/ckeditor.js"></script>
+
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--
@@ -154,6 +177,6 @@ session_start();
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
 -->
 
-<script src="../../assets/js/scripts.js"></script>
+<!--<script src="../../assets/js/scripts.js"></script>-->
 </body>
 </html>

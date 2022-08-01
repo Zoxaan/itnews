@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "/app/database/conect.php";
+//include "/app/database/conect.php";
 
 
 ?>
@@ -149,7 +149,7 @@ include "/app/database/conect.php";
                 })
                     .done(function( msg )
                     {
-                        console.log(msg);
+
                         var html = msg;
                         $('#posts').html(html);
                     });
