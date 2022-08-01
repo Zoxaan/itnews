@@ -36,7 +36,10 @@ header{
 }
 
 #style_admin{
-    background-image: url("../avatars/bg/bg4.gif");
+    /*background-image: url("../avatars/bg/webbling.gif");*/
+    text-shadow: 1px 1px 12px red;
+    color: red;
+    font-weight: bold;
 }
 header *{
     color: #ffffff;

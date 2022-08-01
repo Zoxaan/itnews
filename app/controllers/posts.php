@@ -129,8 +129,8 @@ if ($_POST['action']=="loadPostsInIndex") {
 
         $number = $key + 1;
         $style = "";
-        
-         ($post['username'] == "admin") ?  $style = '<i id="style_admin" class="far fa-user"> <a href="profile.php?userid='.$post['user_id'].'"> '.$post['username'].' </a>  </i>' :  $style = '<i class="far fa-user"> <a href="profile.php?userid='.$post['user_id'].'"> '.$post['username'].' </a>  </i>';
+
+         ($post['username'] == "admin") ?  $style = '<i id="style_admin" class="far "> <img src="../../../assets/avatars/bg/ingametit.png"> <a href="profile.php?userid='.$post['user_id'].'"> '.$post['username'].' </a>  </i>' :  $style = '<i class="far fa-user"> <a href="profile.php?userid='.$post['user_id'].'"> '.$post['username'].' </a>  </i>';
 
         $posts_echo = '
                 <div class="post row">
@@ -139,7 +139,7 @@ if ($_POST['action']=="loadPostsInIndex") {
                     </div>
                      <div class="post_text col-12 col-md-8">
                         <h3>
-                            <a href="../../single.php?id='.$post['id'].'"> '.$post['Title'].' </a>
+                            <a href="../../single.php?id_post='.$post['id'].'"> '.$post['Title'].' </a>
                         </h3>
 
                       '.$style.'
