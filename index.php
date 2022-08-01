@@ -1,8 +1,6 @@
 <?php
 session_start();
 //include "/app/database/conect.php";
-
-
 ?>
 <!doctype html>
 <html lang="en">

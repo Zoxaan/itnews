@@ -128,7 +128,14 @@ if ($_POST['action']=="loadPostsInIndex") {
     foreach ($posts as $key => $post) {
 
         $number = $key + 1;
-        $posts_echo ='
+        $style = "";
+        if ($post['username'] == "admin"){
+            $style = '<i id="style_admin" class="far fa-user"> <a href="profile.php?userid='.$post['user_id'].'"> '.$post['username'].' </a>  </i>';
+        }else{
+            $style = '<i class="far fa-user"> <a href="profile.php?userid='.$post['user_id'].'"> '.$post['username'].' </a>  </i>';
+        }
+
+        $posts_echo = '
                 <div class="post row">
                     <div class="img col-12 col-md-4">
                         <img src="/assets/images/'.$post['img'].'" class="img-thumbnail">
@@ -137,8 +144,9 @@ if ($_POST['action']=="loadPostsInIndex") {
                         <h3>
                             <a href="../../single.php?id='.$post['id'].'"> '.$post['Title'].' </a>
                         </h3>
-                        <i class="far fa-user"> <a href="profile.php?userid='.$post['user_id'].'"> '.$post['username'].' </a>  </i>
-                        
+
+                      '.$style.'
+
                         <i class="far fa-calendar">'.$post['date_create'].'</i>
                         <p class="preview-text">
 

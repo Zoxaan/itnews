@@ -34,6 +34,10 @@ header{
     background: #008484;
     height: 70px;
 }
+
+#style_admin{
+    background-image: url("../avatars/bg/bg4.gif");
+}
 header *{
     color: #ffffff;
 }
