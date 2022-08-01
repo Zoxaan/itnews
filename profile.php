@@ -1,7 +1,7 @@
 <?php
 include 'app/database/conect.php';
-$userID = $_GET['userID'];
-$user = $dbh->prepare("SELECT users.*, role.name_role FROM users JOIN role ON users.jobtitle = role.id_role ");
+$userID = $_GET['userid'];
+$user = $dbh->prepare("SELECT users.*, role.name_role FROM users JOIN role ON users.jobtitle = role.id_role AND users.id = $userID");
 $user->execute();
 
 $user = $user->fetch();
