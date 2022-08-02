@@ -1,6 +1,8 @@
 <?php
+session_start();
 include "app/database/conect.php";
-$idPost = $_GET["id"];
+
+$idPost = $_GET["id_post"];
 
 //SELECT posts.*,users.username FROM posts JOIN users ON posts.user_id = users.id WHERE id = $idPost
 $conkretniypost = $dbh->prepare("SELECT posts.*,users.username FROM posts JOIN users ON posts.user_id = users.id WHERE posts.id = $idPost ");
