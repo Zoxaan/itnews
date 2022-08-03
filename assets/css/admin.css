@@ -295,3 +295,13 @@ error msg
     padding-left: 10px;
     font-weight: 500;
 }
+
+#StyleUser{
+    color: blue;
+}
+#StyleAdm{
+    color: red;
+}
+#StyleModer{
+    color: green;
+}

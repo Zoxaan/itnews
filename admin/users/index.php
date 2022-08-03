@@ -1,10 +1,13 @@
-
+<?php
+session_start();
+?>
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
@@ -23,42 +26,87 @@
 
 <?php include("../../app/include/header-admin.php"); ?>
 
-<div class="container">
 
+<div class="container">
     <?php include "../../app/include/sidebar-admin.php"; ?>
 
-        <div class="posts col-9">
-            <div class="button row">
-                <a href="" class="col-2 btn btn-success">Создать</a>
-                <span class="col-1"></span>
-                <a href="" class="col-3 btn btn-warning">Редактировать</a>
-            </div>
-            <div class="row title-table">
-                <h2>Пользователи</h2>
-                <div class="col-1">ID</div>
-                <div class="col-2">Логин</div>
-                <div class="col-3">Email</div>
-                <div class="col-2">Роль</div>
-                <div class="col-4">Управление</div>
-            </div>
-         
-            <div class="row post">
-                <div class="col-1"></div>
-                <div class="col-2"></div>
-                <div class="col-3"></div>
-               
-                    <div class="col-2">Admin</div>
-         
-                    <div class="col-2">User</div>
-            
-                <div class="red col-2"><a href="">edit</a></div>
-                <div class="del col-2"><a href="">delete</a></div>
-            </div>
-       
+    <div class="posts col-9">
+        <div class="button row">
+            <a href="create.php" class="col-2 btn btn-success">Создать</a>
+            <span class="col-1"></span>
+            <a href="edit.php" class="col-3 btn btn-warning">Редактировать</a>
         </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Емайл</th>
+                <th scope="col">Ник</th>
+                <th scope="col">Уровень доступа</th>
+                <th scope="col">Редактирование</th>
+
+            </tr>
+            </thead>
+            <tbody id="table" >
+
+
+            </tbody>
+        </table>
+
     </div>
 </div>
+</div>
 
+<script>
+
+
+
+    $(document).ready(function (){
+        LoadPosts();
+        function LoadPosts(){
+            $.ajax({
+                method: "POST",
+                url: "../../app/controllers/users.php",
+                data: {
+                    action: "loadPosts"
+                }
+            })
+                .done(function( msg )
+                {
+                    console.log(msg);
+                    var html = msg;
+                    $('#table').html(html);
+                });
+            setTimeout(LoadPosts, 500);
+
+        }
+
+
+    });
+    function deletePosts(id,event){
+
+        $.ajax({
+            method: "POST",
+            url: "../../app/controllers/posts.php",
+            data: {
+                deleteID:id,
+                action: "DeletePosts"
+            }
+        })
+            .done(function(  )
+            {
+                // window.location.href = 'index.php';
+
+            });
+
+    }
+
+
+
+
+
+
+</script>
 
 <!-- footer -->
 <?php include("../../app/include/footer.php"); ?>

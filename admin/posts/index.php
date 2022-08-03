@@ -43,7 +43,6 @@ session_start();
                     <th scope="col">Название</th>
                     <th scope="col">Автор</th>
                     <th scope="col">Редактирование</th>
-
                 </tr>
                 </thead>
                 <tbody id="table" >

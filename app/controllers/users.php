@@ -131,36 +131,44 @@ if ($_POST["action"] == "log"){
         echo json_encode($compl_arr);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
 
+if ($_POST['action']=="loadPosts") {
+    $query = $dbh->prepare("SELECT users.*,role.name_role FROM users JOIN role ON users.jobtitle = role.id_role ");
+    $query->execute();
+    $users = $query->fetchAll(PDO::FETCH_ASSOC);
 
+
+
+    foreach ($users as $key => $user) {
+        $number = $key + 1;
+        $Role = "";
+        switch ($user['name_role']){
+            case 'admin': $Role = "StyleAdm"; break;
+            case 'moderator' : $Role = "StyleModer";break;
+            case 'user' : $Role = "StyleUser";break;
+        }
+
+        $posts_echo =
+            '<tr>
+                    <td> ' . $number . '</td>
+                     <td id="topicname" > ' . $user['email'] . '</td>
+                     <td>' . $user['username'] . '</td>
+                     <td id="'.$Role.'" >' . $user['name_role'] . '</td>
+                     <td>
+                     <a  href="../../admin/posts/edit.php?edit_id=' . $user['id'] . ' ">edit</a>
+                     </td>
+                     <td>
+                     <a id="deleteTop" onclick="event.preventDefault();deletePosts(' . $user['id'] . ')" href="">delete</a>
+                      </td>
+            </tr>';
+
+
+        echo $posts_echo;
+    }
+}
 
 
 
