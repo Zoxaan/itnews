@@ -109,7 +109,7 @@ session_start();
 </script>
 
 <!-- footer -->
-<?php include("../../app/include/footer.php"); ?>
+
 <!-- // footer -->
 
 

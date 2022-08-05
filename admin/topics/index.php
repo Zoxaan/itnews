@@ -144,7 +144,7 @@ function deleteTopics(id,event){
 
 
 <!-- footer -->
-<?php include("../../app/include/footer.php"); ?>
+
 <!-- // footer -->
 
 

@@ -130,6 +130,10 @@ if ($_POST['action']=="loadPostsInIndex") {
 
         $number = $key + 1;
         $style = "";
+        $new_datetime = DateTime::createFromFormat ( "Y-m-d H:i:s", $post["date_create"] );
+
+        $date = $new_datetime->format('d/m/y');
+
 
          ($post['username'] == "admin") ?  $style = '<i id="style_admin" class="far "> <img src="../../../assets/avatars/bg/ingametit.png"> <a href="profile.php?userid='.$post['user_id'].'"> '.$post['username'].' </a>  </i>' :  $style = '<i class="far fa-user"> <a href="profile.php?userid='.$post['user_id'].'"> '.$post['username'].' </a>  </i>';
 
@@ -145,7 +149,7 @@ if ($_POST['action']=="loadPostsInIndex") {
 
                       '.$style.'
 
-                        <i class="far fa-calendar">'.$post['date_create'].'</i>
+                        <i class="far fa-calendar">'.$new_datetime->format('d.m.y').'</i>
                         <p class="preview-text">
 
                            '.mb_strimwidth($post['content'],0,13,"...").'
