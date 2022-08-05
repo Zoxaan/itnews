@@ -170,6 +170,19 @@ if ($_POST['action']=="loadPosts") {
     }
 }
 
+if ($_POST['action']=="CreateUser") {
+
+    $login =  trim($_POST['Login']);
+    $email =  $_POST['Email'];
+    $password =  trim($_POST['password']);
+    $PassVer =  trim($_POST['PasswordVer']);
+    $JobTitle =  trim($_POST['JobTitle']);
+
+    $query = $dbh->prepare("INSERT INTO");
+
+}
+
+
 
 
 

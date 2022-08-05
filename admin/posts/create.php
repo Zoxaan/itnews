@@ -27,8 +27,8 @@ session_start();
 </head>
 <body>
 
-<?php include("../../app/include/header-admin.php"); ?>
 
+<?php include("../../app/include/header-admin.php"); ?>
 <div class="container">
     <?php include "../../app/include/sidebar-admin.php"; ?>
 
@@ -91,6 +91,10 @@ session_start();
 </div>
 
 <script>
+
+
+
+
     var myEditor;
 
     ClassicEditor
@@ -105,13 +109,12 @@ session_start();
 
 
 
-
-
-
-
         //
     document.addEventListener("DOMContentLoaded", function(event){
         $('#createPostBtn').on('click',function (event){
+
+
+
 
             event.preventDefault();
             var title = $('#posts_title').val();
@@ -161,6 +164,8 @@ session_start();
 
 <!-- footer -->
 <?php include("../../app/include/footer.php"); ?>
+
+
 <!-- // footer -->
 
 

@@ -1,11 +1,18 @@
+<?php
+session_start();
+ include "../../app/database/conect.php";
+ $query= $dbh->prepare("SELECT role.name_role FROM role ");
+ $query->execute();
+ $roles= $query->fetchAll();
 
+?>
 <!doctype html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
@@ -35,34 +42,44 @@
             <div class="row title-table">
                 <h2>Создать пользователя</h2>
             </div>
+            <div id="msg" class="mb-3 col-12 col-md-4">
+
+            </div>
             <div class="row add-post">
                 <div class="mb-12 col-12 col-md-12 err">
-                    <!-- Вывод массива с ошибками -->
-                    <?php include "../../app/helps/errorInfo.php"; ?>
+
                 </div>
-                <form action="create.php" method="post">
+                <form  method="post" id="CreateFormUser">
                     <div class="col">
-                        <label for="formGroupExampleInput" class="form-label">Ваш логин</label>
-                        <input name="login" value="" type="text" class="form-control" id="formGroupExampleInput" placeholder="введите ваш логин...">
+                        <label for="formGroupExampleInput" class="form-label">Логин</label>
+                        <input value="" type="text" class="form-control" id="Login" placeholder="введите  логин пользователя...">
                     </div>
                     <div class="col">
                         <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input name="mail" value="" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="введите ваш email...">
+                        <input  value="" type="email" class="form-control" id="Email" aria-describedby="emailHelp" placeholder="введите  email пользователя...">
                     </div>
                     <div class="col">
                         <label for="exampleInputPassword1" class="form-label">Пароль</label>
-                        <input name="pass-first" type="password" class="form-control" id="exampleInputPassword1" placeholder="введите ваш пароль...">
+                        <input  type="password" class="form-control" id="Password" placeholder="введите  пароль пользователя...">
                     </div>
                     <div class="col">
                         <label for="exampleInputPassword2" class="form-label">Повторите пароль</label>
-                        <input name="pass-second" type="password" class="form-control" id="exampleInputPassword2" placeholder="повторите ваш пароль...">
+                        <input type="password" class="form-control" id="PasswordVer" placeholder="повторите  пароль пользователя...">
                     </div>
-                    <input name="admin" class="form-check-input" value="1" type="checkbox" id="flexCheckChecked">
-                    <label class="form-check-label" for="flexCheckChecked">
-                        Admin?
-                    </label>
+
+                    <select class="form-select mt-3 mb-3" id="select" aria-label="Default select example">
+
+                                                <option selected>Open this select menu</option>
+                        <?php
+                        foreach ($roles as $key => $role):
+                        ?>
+
+                                                <option value="<?=$key+1?>"><?=$role['name_role']?></option>
+                        <?php endforeach; ?>
+                                            </select>
+
                     <div class="col">
-                        <button name="create-user" class="btn btn-primary" type="submit">Создать</button>
+                        <button name="create-user" class="btn btn-primary" id="CreateUserBtn" type="submit">Создать</button>
                     </div>
                 </form>
             </div>
@@ -71,7 +88,61 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function (){
 
+
+        $('#CreateUserBtn').on('click',function (event){
+            event.preventDefault();
+            var Login = $('#Login').val();
+            var Email = $('#Email').val();
+            var Password = $('#Password').val();
+            var PasswordVer = $('#PasswordVer').val();
+            var JobTitle =  $('#select').val();
+            var fd = new FormData(document.getElementById("CreateFormUser"));
+
+            fd.append('Login',Login);
+            fd.append('Email',Email);
+            fd.append('Password',Password);
+            fd.append('PasswordVer',PasswordVer);
+            fd.append('JobTitle',JobTitle);
+            fd.append('action',"CreateUser");
+
+
+
+            $.ajax({
+                method: "POST",
+                processData: false,
+                contentType: false,
+                url: "../../app/controllers/users.php",
+                data:fd
+            })
+                .done(function( msg ) {
+                    alert(msg);
+
+
+                    var message_arr = jQuery.parseJSON(msg);
+                    if (message_arr.key == "error_msg"){
+                        var html = '<div class="alert alert-danger" role="alert">' + message_arr.message + '</div>';
+                        $('div#msg').html(html);
+
+                    }else if (message_arr.key == "success"){
+                        sendIMG(message_arr.lastID);
+
+                    }
+                });
+
+
+        })
+
+
+
+
+
+
+
+    });
+</script>
 <!-- footer -->
 <?php include("../../app/include/footer.php"); ?>
 <!-- // footer -->
