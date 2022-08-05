@@ -114,7 +114,7 @@ session_start();
 
 
 <!-- footer -->
-<?php include("../../app/include/footer.php"); ?>
+
 <!-- // footer -->
 
 
