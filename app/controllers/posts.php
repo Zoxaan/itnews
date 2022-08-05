@@ -94,6 +94,7 @@ if ($_POST['action']=="loadPosts") {
 
     foreach ($posts as $key => $post) {
         $number = $key + 1;
+
         $posts_echo =
             '<tr>
                     <td> ' . $number . '</td>
@@ -139,7 +140,7 @@ if ($_POST['action']=="loadPostsInIndex") {
                     </div>
                      <div class="post_text col-12 col-md-8">
                         <h3>
-                            <a href="../../single.php?id_post='.$post['id'].'"> '.$post['Title'].' </a>
+                            <a href="../../single.php?id_post='.$post['id'].'"> '.mb_strimwidth($post['Title'],0,10,"...").' </a>
                         </h3>
 
                       '.$style.'
@@ -147,7 +148,7 @@ if ($_POST['action']=="loadPostsInIndex") {
                         <i class="far fa-calendar">'.$post['date_create'].'</i>
                         <p class="preview-text">
 
-                           '.$post['content'].'
+                           '.mb_strimwidth($post['content'],0,13,"...").'
                         </p>
                     </div>
                 </div>'
