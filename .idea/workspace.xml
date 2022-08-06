@@ -2,8 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="41f1079c-03c2-4882-880e-ab8a1a119492" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/avatars/1659783722_Р‘РµР·С‹РјСЏРЅРЅС‹Р№.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/avatars/1659784090__hQwNgk3YXs.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/1659784534__hQwNgk3YXs.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/1659784681__hQwNgk3YXs.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/1659784687__hQwNgk3YXs.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/1659784697__hQwNgk3YXs.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/1659784713__hQwNgk3YXs.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/1659784715__hQwNgk3YXs.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/1659784726__hQwNgk3YXs.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/1659784751__hQwNgk3YXs.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/database/conect.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/database/conect.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/include/sidebar-admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/include/sidebar-admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hhgh333.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/path.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/reg.php" beforeDir="false" afterPath="$PROJECT_DIR$/reg.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +110,7 @@
       <workItem from="1659706912254" duration="2270000" />
       <workItem from="1659731454374" duration="2266000" />
       <workItem from="1659778503370" duration="3833000" />
+      <workItem from="1659787047200" duration="5000" />
     </task>
     <servers />
   </component>
