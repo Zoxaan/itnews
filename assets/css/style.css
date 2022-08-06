@@ -350,4 +350,7 @@ COMMENTS
     margin: 0.5rem 1.5rem 1.5rem 0;
     font-weight: 500;
 }
+.single_post_text{
+    word-wrap: break-word;
+}
 
