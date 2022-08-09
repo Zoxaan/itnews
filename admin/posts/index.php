@@ -32,9 +32,9 @@ session_start();
 
         <div class="posts col-9">
             <div class="button row">
-                <a href="create.php" class="col-2 btn btn-success">Создать</a>
+                <a href="create.php" class="col-2 btn btn-success mb-3">Создать</a>
                 <span class="col-1"></span>
-                <a href="edit.php" class="col-3 btn btn-warning">Редактировать</a>
+
             </div>
             <table class="table">
                 <thead>

@@ -9,8 +9,8 @@ if($_POST["action"]=="createPosts"){
     $hot_status = ($_POST['pub'] == "true") ? 1 : 0;
 
 
-    $PostTitle = $_POST['title'];
-    $PostContent = $_POST['content'];
+    $PostTitle = trim(htmlspecialchars($_POST['title']));
+    $PostContent = trim(htmlspecialchars($_POST['content']));;
     if ($_FILES['img']['name'] == ''){
         $imgName = "not_found.png";
 

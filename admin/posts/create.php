@@ -33,11 +33,6 @@ session_start();
     <?php include "../../app/include/sidebar-admin.php"; ?>
 
         <div class="posts col-9">
-            <div class="button row">
-                <a href="" class="col-2 btn btn-success">Создать</a>
-                <span class="col-1"></span>
-                <a href="" class="col-3 btn btn-warning">Редактировать</a>
-            </div>
             <div class="row title-table">
                 <h2>Добавление записи</h2>
             </div>
@@ -45,10 +40,7 @@ session_start();
                 <div id="msg" class="mb-3 col-12 col-md-4">
 
                 </div>
-                <div class="mb-12 col-12 col-md-12 err">
 
-
-                </div>
                 <form action="create.php" method="post" enctype="multipart/form-data" id="testidform">
                     <div class="col mb-4">
                         <input value="" id="posts_title" name="title" type="text" class="form-control" placeholder="Title" aria-label="Название статьи">
@@ -80,15 +72,18 @@ session_start();
 <!--                    -->
 <!--                    </select>-->
 
-                    <div class="col col-6">
+                    <div class="col col-6 mt-2">
                         <button name="add_post" id="createPostBtn" class="btn btn-primary" type="submit">Добавить запись</button>
                     </div>
+
                 </form>
             </div>
 
         </div>
     </div>
 </div>
+
+
 
 <script>
 
@@ -113,9 +108,6 @@ session_start();
     document.addEventListener("DOMContentLoaded", function(event){
         $('#createPostBtn').on('click',function (event){
 
-
-
-
             event.preventDefault();
             var title = $('#posts_title').val();
             var content = myEditor.getData();
@@ -137,8 +129,6 @@ session_start();
                 data:fd
             })
                 .done(function( msg ) {
-                    alert(msg);
-
 
                     var message_arr = jQuery.parseJSON(msg);
                     if (message_arr.key == "error_msg"){
@@ -146,7 +136,8 @@ session_start();
                         $('div#msg').html(html);
 
                     }else if (message_arr.key == "success"){
-                        sendIMG(message_arr.lastID);
+                        alert("Пост успешно создан");
+                       window.location = 'index.php';
 
                     }
                 });
