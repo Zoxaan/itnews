@@ -3,17 +3,6 @@ session_start();
 include ('../../app/database/conect.php');
 
 
-
-
-
-
-
-
-
-
-
-
-
 if($_POST["action"]=="createPosts"){
 
 
@@ -47,13 +36,8 @@ if($_POST["action"]=="createPosts"){
     if(!empty($validate_msg)){
         $error_msg = ["key"=>"error_msg","message"=>$validate_msg];
          echo json_encode($error_msg);
-
-
-
     }else{
 
-
-       // $UserID = $dbh->prepare("SELECT * FROM users WHERE id = ");
         $postsinsert = $dbh->prepare("INSERT INTO posts (Title,content,user_id,img,hot) VALUES (:name , :content,:userid,:img,:hot_status)");
         $postsinsert->execute([
             "name" => $PostTitle,
@@ -81,11 +65,6 @@ if($_POST["action"]=="createPosts"){
 
 
 
-
-
-
-
-
 if ($_POST['action']=="loadPosts") {
     $query = $dbh->prepare("SELECT posts.*,users.username FROM posts JOIN users ON posts.user_id = users.id");
     $query->execute();
@@ -98,7 +77,7 @@ if ($_POST['action']=="loadPosts") {
         $posts_echo =
             '<tr>
                     <td> ' . $number . '</td>
-                     <td id="topicname" > ' . $post['Title'] . '</td>
+                     <td id="topicname" > ' .mb_strimwidth($post['Title'],0,50,"..."). '</td>
                      <td>' . $post['username'] . '</td>
                      <td>
                      <a  href="../../admin/posts/edit.php?edit_id=' . $post['id'] . ' ">edit</a>
@@ -120,9 +99,6 @@ if ($_POST['action']=="loadPostsInIndex") {
     $query = $dbh->prepare("SELECT posts.*,users.username FROM posts JOIN users ON posts.user_id = users.id");
     $query->execute();
     $posts = $query->fetchAll(PDO::FETCH_ASSOC);
-
-
-
 
 
 

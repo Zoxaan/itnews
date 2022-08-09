@@ -73,7 +73,6 @@ session_start();
             })
                 .done(function( msg )
                 {
-                    console.log(msg);
                     var html = msg;
                     $('#table').html(html);
                 });
@@ -83,7 +82,7 @@ session_start();
 
 
     });
-    function deletePosts(id,event){
+    function deletePosts(id){
 
         $.ajax({
             method: "POST",
@@ -95,7 +94,7 @@ session_start();
         })
             .done(function(  )
             {
-                // window.location.href = 'index.php';
+                //
 
             });
 

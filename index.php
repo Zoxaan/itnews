@@ -46,14 +46,14 @@ $HotPosts = $query->fetchAll();
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
         <div class="carousel-inner">
-            <?php foreach($HotPosts as $key=> $hotePost): ?>
+            <?php foreach($HotPosts as $key=> $hotPost): ?>
             <?php if($key == 0): ?>
 
             <div class="carousel-item active">
                 <?php else: ?>
                 <div class="carousel-item">
                     <?php endif ;?>
-                    <img src="<?='assets/images/' .$hotePost['img']?>" class="d-block w-100 h-100" alt="...">
+                    <img src="<?='assets/images/' .$hotPost['img']?>" class="d-block w-100 h-100" alt="...">
                     <div class="carousel-caption-hack carousel-caption d-none d-md-block">
 
                     </div>
