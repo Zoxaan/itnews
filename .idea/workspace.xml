@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="41f1079c-03c2-4882-880e-ab8a1a119492" name="Changes" comment="">
+    <list default="true" id="41f1079c-03c2-4882-880e-ab8a1a119492" name="Changes" comment="Незначительные правки при регистрации">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/posts/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/posts/create.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/posts/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/posts/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/posts.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/posts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/users/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/users/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/users.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/users.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/single.php" beforeDir="false" afterPath="$PROJECT_DIR$/single.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +41,12 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/OSPanel/domains/siteajaxblogs/assets/avatars&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/OSPanel/domains/siteajaxblogs&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -98,8 +105,19 @@
       <workItem from="1659778503370" duration="3833000" />
       <workItem from="1659787047200" duration="5000" />
       <workItem from="1659787174895" duration="26000" />
-      <workItem from="1660044167201" duration="3760000" />
+      <workItem from="1660044167201" duration="4564000" />
+      <workItem from="1661787803036" duration="29000" />
+      <workItem from="1661788127585" duration="698000" />
+      <workItem from="1661801048725" duration="569000" />
     </task>
+    <task id="LOCAL-00001" summary="Незначительные правки при регистрации">
+      <created>1660055121984</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1660055121985</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,5 +133,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Незначительные правки при регистрации" />
+    <option name="LAST_COMMIT_MESSAGE" value="Незначительные правки при регистрации" />
   </component>
 </project>

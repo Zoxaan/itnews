@@ -135,7 +135,7 @@ if ($_POST["action"] == "log"){
 
 
 
-if ($_POST['action']=="loadPosts") {
+if ($_POST['action']=="loadUsers") {
     $query = $dbh->prepare("SELECT users.*,role.name_role FROM users JOIN role ON users.jobtitle = role.id_role ");
     $query->execute();
     $users = $query->fetchAll(PDO::FETCH_ASSOC);

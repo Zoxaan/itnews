@@ -62,13 +62,13 @@ session_start();
 
 
     $(document).ready(function (){
-        LoadPosts();
-        function LoadPosts(){
+        LoadUsers();
+        function LoadUsers(){
             $.ajax({
                 method: "POST",
                 url: "../../app/controllers/users.php",
                 data: {
-                    action: "loadPosts"
+                    action: "loadUsers"
                 }
             })
                 .done(function( msg )
@@ -77,7 +77,7 @@ session_start();
                     var html = msg;
                     $('#table').html(html);
                 });
-            setTimeout(LoadPosts, 500);
+            setTimeout(LoadUsers, 500);
 
         }
 
