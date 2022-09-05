@@ -1,7 +1,7 @@
 <?php
 session_start();
 ?>
-<html lang="ru">
+<html lang="eng">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
